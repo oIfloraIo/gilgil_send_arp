@@ -163,20 +163,12 @@ int main(int argc, char *argv[])
         uint8_t sender_mac[6];
         uint8_t target_mac[6];
 
-        // Get the MAC address of the sender
         get_mac(handle, my_mac, my_ip, sender_ip, sender_mac);
 
-        // Get the MAC address of the target
         get_mac(handle, my_mac, my_ip, target_ip, target_mac);
 
-        // Send ARP reply
         send_arp_reply(handle, sender_ip, sender_mac, target_ip, my_mac);
 
-        printf("Sender MAC: ");
-        for (int j = 0; j < 6; j++)
-        {
-            printf("%02x%c", sender_mac[j], (j < 5) ? ':' : '\n');
-        }
     }
 
     pcap_close(handle);
